@@ -8,7 +8,8 @@ fn atm(amount: u32) -> Result<[u32; 2], ()> {
         return Err(());
     }
 
-    return Ok([amount / 50 - ((amount % 50 % 20) / 10), (amount % 50 + (amount % 50 % 20) * 5) / 20]);
+    let remainder = amount % 50 % 20;
+    return Ok([amount / 50 - remainder / 10, (amount % 50 + remainder * 5) / 20]);
 }
 
 #[cfg(test)]
